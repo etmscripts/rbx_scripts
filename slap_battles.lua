@@ -24,6 +24,7 @@ _G.RemoveColorCorrection = false;
 _G.KillAura = false;
 _G.KADelay = nil;
 _G.AntiTimestop = false;
+_G.AdminNotifier = false;
 
 tab1:Toggle("Killaura",function(bool)
     shared.toggle = bool;
@@ -86,6 +87,11 @@ tab2:Toggle("Hide Visuals",function(bool)
     _G.RemoveColorCorrection = bool;
 end)
 
+tab2:Toggle("Leave on Admin's join",function(bool)
+    shared.toggle = bool;
+    _G.AdminNotifier = bool;
+end)
+
 tab3:Toggle("Pick Up Gifts",function(bool)
     shared.toggle = bool;
     _G.PickUpGifts = bool;
@@ -105,6 +111,10 @@ end)
 tab3:Bind("Force Invisibility",Enum.KeyCode.Z,function()
     game:GetService("ReplicatedStorage").Ghostinvisibilitydeactivated:FireServer();
     game:GetService("ReplicatedStorage").Ghostinvisibilityactivated:FireServer();
+end)
+
+tab3:Bind("Force Mail",Enum.KeyCode.Z,function()
+    game:GetService("ReplicatedStorage").MailSend:FireServer();
 end)
 
 tab3:Button("Duck Badge",function()
@@ -488,6 +498,14 @@ game:GetService("RunService").Heartbeat:Connect(function()
                         box.Color3 = _G.GColor;
                     end
                 end
+            end
+        end
+    end)
+        
+    pcall(function()
+        if _G.AdminNotifier then
+            if game:GetService("Players"):FindFirstChild("PimGameFreak") or game:GetService("Players"):FindFirstChild("buffwagon") or game:GetService("Players"):FindFirstChild("Astronaxtic") or game:GetService("Players"):FindFirstChild("Villadyne") or ame:GetService("Players"):FindFirstChild("undeadtaIIie") then
+                LocalPlayer:Kick(" [dizy's script] Admin joined! Join on other server. ")
             end
         end
     end)
