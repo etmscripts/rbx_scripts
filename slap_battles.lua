@@ -31,7 +31,7 @@ tab1:Toggle("Killaura",function(bool)
 end)
 
 tab1:Slider("Hit Delay",{
-    min = 0.1;
+    min = 0;
     max = 5;
     precise = true;
 },function(value)
@@ -192,7 +192,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
         end
     end)
 
-    spawn(function()
+    pcall(function()
         if _G.PreventRagdoll then
             if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:WaitForChild("Torso").Transparency == 0 then
                 if LocalPlayer.Character:FindFirstChildOfClass("Humanoid").PlatformStand == true then LocalPlayer.Character:FindFirstChildOfClass("Humanoid").PlatformStand = false; end
@@ -266,7 +266,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
         end
     end)
 
-    spawn(function()
+    pcall(function()
         if _G.AntiTimestop then
             if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:WaitForChild("Torso").Transparency == 0 then
                 if game:GetService("Workspace"):FindFirstChild("universaltimestop") ~= nil then
@@ -307,7 +307,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
         end
     end)
 
-    spawn(function()
+    pcall(function()
         if _G.KillAura then
             for _,v in pairs(game:GetService("Players"):GetChildren()) do
                 if v.Name ~= LocalPlayer.Name then
@@ -450,7 +450,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
         end
     end)
 
-    spawn(function()
+    pcall(function()
         if _G.PickUpGifts then
             if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then
                 for _,v in pairs(game:GetService("Workspace"):GetChildren()) do
