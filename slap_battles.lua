@@ -124,6 +124,11 @@ tab3:Button("Obama Glove Badge", function()
 end)
 
 tab3:Button("TP to Arena", function()
+    LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(38, 0, 60);
+end)
+
+tab3:Button("TP to Arena", function()
+    LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(-339.448792, 324.929474, -1.96081245);
 end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
