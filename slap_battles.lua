@@ -113,7 +113,7 @@ tab3:Bind("Force Invisibility",Enum.KeyCode.Z,function()
     game:GetService("ReplicatedStorage").Ghostinvisibilityactivated:FireServer();
 end)
 
-tab3:Bind("Force Mail",Enum.KeyCode.Z,function()
+tab3:Bind("Force Mail",Enum.KeyCode.E,function()
     game:GetService("ReplicatedStorage").MailSend:FireServer();
 end)
 
