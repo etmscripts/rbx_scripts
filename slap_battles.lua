@@ -309,6 +309,13 @@ game:GetService("RunService").Heartbeat:Connect(function()
                     p.Transparency = 0.8;
                 end
             end
+                    
+            for _,v in pairs(game:GetService("Players"):GetChildren()) do
+                if v.Character:FindFirstChild("rock") then
+                    v.Character:FindFirstChild("rock").CanTouch = false;
+                    v.Character:FindFirstChild("rock").CanCollide = false;
+                end
+            end
         end
     end)
 
