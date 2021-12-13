@@ -324,7 +324,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
             for _,v in pairs(game:GetService("Players"):GetChildren()) do
                 if v.Name ~= LocalPlayer.Name then
                     if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChild("Humanoid") ~= nil and LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0 and not debounce and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then 
-                        if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health > 0 and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v.Character:FindFirstChild("Torso").Transparency == 0 then
+                        if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health > 0 and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v.Character:FindFirstChild("Torso").Transparency == 0 and v.Character:FindFirstChild("rock") == nil then
                             if (LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position-v.Character:FindFirstChild("HumanoidRootPart").Position).Magnitude < 30 then
                                 if LocalPlayer.Character:FindFirstChild("Diamond") then
                                     LocalPlayer.Character:FindFirstChild("Diamond"):Activate();
