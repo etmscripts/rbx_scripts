@@ -127,7 +127,7 @@ tab3:Button("TP to Arena", function()
     LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(38, 0, 60);
 end)
 
-tab3:Button("TP to Arena", function()
+tab3:Button("TP to Lobby", function()
     LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(-339.448792, 324.929474, -1.96081245);
 end)
 
