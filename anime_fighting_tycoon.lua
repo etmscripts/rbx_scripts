@@ -21,7 +21,6 @@ local function get_targets()
         end
     end
 end
-
 tab1:Toggle("Kill All",function(bool)
     shared.toggle = bool;
     getgenv().KillAll = bool;
@@ -91,6 +90,22 @@ game:GetService("RunService").Heartbeat:Connect(function()
                                     door.Head.CanCollide = false;
                                     door.Head.CanTouch = false;
                                     door.Head.Transparency = 1;
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        else
+            for _,plot in pairs(game:GetService("Workspace"):GetChildren()) do
+                if plot:IsA("Folder") and plot ~= nil then
+                    if plot.Name == "Wind" or plot.Name == "Shock" or plot.Name == "Light" or plot.Name == "Gravity" or plot.Name == "Fire" or plot.Name == "Earth" then
+                        for _,door in pairs(plot:GetChildren()) do
+                            if door:IsA("Model") and door.Name == "ClaimPart" then
+                                if door.Owner.Value ~= game:GetService("Players").LocalPlayer.Name then
+                                    door.Head.CanCollide = false;
+                                    door.Head.CanTouch = true;
+                                    door.Head.Transparency = 0.2;
                                 end
                             end
                         end
