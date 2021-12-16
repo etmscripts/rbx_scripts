@@ -21,6 +21,7 @@ local function get_targets()
         end
     end
 end
+
 tab1:Toggle("Kill All",function(bool)
     shared.toggle = bool;
     getgenv().KillAll = bool;
