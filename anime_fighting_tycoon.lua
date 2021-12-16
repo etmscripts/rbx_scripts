@@ -21,6 +21,9 @@ local function get_targets()
         end
     end
 end
+
+get_targets();
+
 tab1:Toggle("Kill All",function(bool)
     shared.toggle = bool;
     getgenv().KillAll = bool;
@@ -140,7 +143,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
                             for _,equipped_tool in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
                                 if equipped_tool:IsA("Tool") then
                                     equipped_tool:Activate();
-                                    game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(v.Character:FindFirstChild("HumanoidRootPart").CFrame.X, v.Character:FindFirstChild("HumanoidRootPart").CFrame.Y-math.random(4,6), v.Character:FindFirstChild("HumanoidRootPart").CFrame.Z+1);
+                                    game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(v.Character:FindFirstChild("HumanoidRootPart").CFrame.X, v.Character:FindFirstChild("HumanoidRootPart").CFrame.Y-math.random(2,3), v.Character:FindFirstChild("HumanoidRootPart").CFrame.Z+1);
                                 end
                             end
 
