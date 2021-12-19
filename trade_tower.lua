@@ -142,7 +142,7 @@ game:GetService("RunService").RenderStepped:Connect(function()
                 if v.Name == "Present" then
                     delay(5, function()
                         LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame;
-                        firetouchinterest(LocalPlayer.Character.HumanoidRootPart, x)
+                        firetouchinterest(LocalPlayer.Character.HumanoidRootPart, v)
                     end)
                 end
             end
@@ -154,8 +154,8 @@ game:GetService("RunService").RenderStepped:Connect(function()
             for _,v in pairs(game:GetService("Workspace")['Snowmen']:GetChildren()) do
                 if v:IsA("Part") or v:IsA("MeshPart") then
                     delay(5, function()
-                        LocalPlayer.Character.HumanoidRootPart.CFrame = x.CFrame;
-                        firetouchinterest(LocalPlayer.Character.HumanoidRootPart, x)
+                        LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame;
+                        firetouchinterest(LocalPlayer.Character.HumanoidRootPart, v)
                     end)
                 end
             end
