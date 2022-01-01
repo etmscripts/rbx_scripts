@@ -1,14 +1,18 @@
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
 local w = library:CreateWindow("by dizy#5334")
+local w1 = library:CreateWindow("by dizy#5334")
 
 local tab1 = w:CreateFolder("Combat")
 local tab2 = w:CreateFolder("Visuals")
 local tab3 = w:CreateFolder("Misc")
+local tab4 = w1:CreateFolder("Abilities")
+local tab5 = w1:CreateFolder("Teleports")
 
 local LocalPlayer = game:GetService("Players").LocalPlayer;
 local debounce = false;
 local ragdoll_debounce = false;
 local ragdoll_debounce_1 = 0;
+local event_debounce = false;
 
 _G.InfTimestop = false;
 _G.PickUpGifts = false;
@@ -25,6 +29,11 @@ _G.KillAura = false;
 _G.KADelay = nil;
 _G.AntiTimestop = false;
 _G.AdminNotifier = false;
+_G.ShowInvisPlrs = false;
+_G.GoldenGodmode = false;
+_G.RainbowCharacter = false;
+_G.RGBDelay = nil;
+_G.SpamBricks = false;
 
 tab1:Toggle("Killaura",function(bool)
     shared.toggle = bool;
@@ -37,11 +46,6 @@ tab1:Slider("Hit Delay",{
     precise = true;
 },function(value)
     _G.KADelay = value;
-end)
-
-tab1:Toggle("Loop Timestop",function(bool)
-    shared.toggle = bool;
-    _G.InfTimestop = bool;
 end)
 
 tab1:Toggle("Anti Ragdoll",function(bool)
@@ -87,7 +91,12 @@ tab2:Toggle("Hide Visuals",function(bool)
     _G.RemoveColorCorrection = bool;
 end)
 
-tab2:Toggle("Leave on Admin's join",function(bool)
+tab2:Toggle("Show Invisible Players",function(bool)
+    shared.toggle = bool;
+    _G.ShowInvisPlrs = bool;
+end)
+
+tab2:Toggle("Admin Notifier",function(bool)
     shared.toggle = bool;
     _G.AdminNotifier = bool;
 end)
@@ -102,19 +111,67 @@ tab3:Toggle("Spam Radio",function(bool)
     _G.SpamRadio = bool;
 end)
 
-tab3:Bind("Force Timestop",Enum.KeyCode.X,function()
+tab4:Toggle("Golden Godmode",function(bool)
+    shared.toggle = bool;
+    _G.GoldenGodmode = bool;
+end)
+
+tab4:Toggle("Reverse Godmode",function(bool)
+    shared.toggle = bool;
+    _G.ReverseGloveGodmode = bool;
+end)
+
+tab4:Toggle("Rainbow Character",function(bool)
+    shared.toggle = bool;
+    _G.RainbowCharacter = bool;
+end)
+
+tab4:Slider("Delay",{
+    min = 0;
+    max = 1.5;
+    precise = true;
+},function(value)
+    _G.RGBDelay = value;
+end)
+
+tab4:Toggle("Loop Timestop",function(bool)
+    shared.toggle = bool;
+    _G.InfTimestop = bool;
+end)
+
+tab4:Toggle("Spam Farts",function(bool)
+    shared.toggle = bool;
+    _G.SpamFarts = bool;
+end)
+
+tab4:Toggle("Spam Bricks",function(bool)
+    shared.toggle = bool;
+    _G.SpamBricks = bool;
+end)
+
+tab4:Bind("Force Timestop",Enum.KeyCode.X,function()
     game:GetService("ReplicatedStorage").TimestopJump:FireServer();
     game:GetService("ReplicatedStorage").Timestopchoir:FireServer();
     game:GetService("ReplicatedStorage").Timestop:FireServer();
 end)
 
-tab3:Bind("Force Invisibility",Enum.KeyCode.Z,function()
+tab4:Bind("Force Invisibility",Enum.KeyCode.Z,function()
     game:GetService("ReplicatedStorage").Ghostinvisibilitydeactivated:FireServer();
     game:GetService("ReplicatedStorage").Ghostinvisibilityactivated:FireServer();
 end)
 
-tab3:Bind("Force Mail",Enum.KeyCode.E,function()
+tab4:Bind("Force Mail",Enum.KeyCode.E,function()
     game:GetService("ReplicatedStorage").MailSend:FireServer();
+end)
+
+tab4:Bind("Force EMP",Enum.KeyCode.R,function()
+    game:GetService("ReplicatedStorage").StunR:FireServer(game:GetService("Workspace")[LocalPlayer.Name].Stun);
+end)
+
+tab3:Button("Get 250 Kills",function()
+    for i=1,250 do
+        game:GetService("ReplicatedStorage").KillsUpdated:FireServer(i, game:GetService("Workspace")[LocalPlayer.Name].Killstreak);
+    end
 end)
 
 tab3:Button("Duck Badge",function()
@@ -133,12 +190,52 @@ tab3:Button("Obama Glove Badge", function()
     fireclickdetector(game:GetService("Workspace")["Lobby"]["Obama"].ClickDetector);
 end)
 
-tab3:Button("TP to Arena", function()
+tab5:Button("TP to Arena", function()
     LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(38, 0, 60);
 end)
 
-tab3:Button("TP to Lobby", function()
+tab5:Button("TP to Lobby", function()
     LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(-339.448792, 324.929474, -1.96081245);
+end)
+
+spawn(function()
+    while wait(0.5) do
+        pcall(function()
+            if _G.ReverseGloveGodmode then
+                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then
+                    if LocalPlayer.Character:FindFirstChild("Left Arm"):FindFirstChildOfClass("SelectionBox") == nil or LocalPlayer.Character:FindFirstChild("Right Arm"):FindFirstChildOfClass("SelectionBox") == nil or LocalPlayer.Character:FindFirstChild("Left Leg"):FindFirstChildOfClass("SelectionBox") == nil or LocalPlayer.Character:FindFirstChild("Right Leg"):FindFirstChildOfClass("SelectionBox") == nil then
+                        game:GetService("ReplicatedStorage").ReverseAbility:FireServer();
+                    elseif LocalPlayer.Character:FindFirstChild("Reversed") ~= nil and LocalPlayer.Character:FindFirstChild("Reversed").Value == true then
+                        return;
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait(_G.RGBDelay) do
+        pcall(function()
+            if _G.RainbowCharacter then
+                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then
+                    game:GetService("ReplicatedStorage").Goldify:FireServer(false, BrickColor.random());
+                end
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait(2.5) do
+        pcall(function()
+            if _G.SpamBricks then
+                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then
+                    game:GetService("ReplicatedStorage").lbrick:FireServer()
+                end
+            end
+        end)
+    end
 end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
@@ -150,6 +247,28 @@ game:GetService("RunService").Heartbeat:Connect(function()
                     game:GetService("ReplicatedStorage").Timestopchoir:FireServer();
                     game:GetService("ReplicatedStorage").Timestop:FireServer();
                 end
+            end
+        end
+    end)
+
+    spawn(function()
+        if _G.GoldenGodmode then
+            if LocalPlayer.Character ~= nil and LocalPlayer.Character:WaitForChild("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then
+                for _,v in pairs(LocalPlayer.Character:GetChildren()) do
+                    if v:IsA("Part") then
+                        if v.Color ~= Color3.fromRGB(255,255,0) then
+                            game:GetService("ReplicatedStorage").Goldify:FireServer(true);
+                        end
+                    end
+                end
+            end
+        end
+    end)
+
+    spawn(function()
+        if _G.SpamFarts then
+            if LocalPlayer.Character ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
+                game:GetService("ReplicatedStorage").Fart:FireServer();
             end
         end
     end)
@@ -300,7 +419,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
         end
     end)
 
-    spawn(function()
+    pcall(function()
         if _G.RemoveColorCorrection then
             if game:GetService("Lighting"):FindFirstChildOfClass("ColorCorrectionEffect") then
                 game:GetService("Lighting"):FindFirstChildOfClass("ColorCorrectionEffect"):Destroy();
@@ -313,7 +432,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
             end
 
             for _,p in pairs(game:GetService("Workspace"):GetChildren()) do
-                if p.Name == "wall" or p.Name == "BusModel" then
+                if p.Name == "wall" or p.Name == "BusModel" or p.Name == "Union" then
                     p.CanCollide = false;
                     p.CanTouch = false;
                     p.Transparency = 0.8;
@@ -321,7 +440,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
             end
                     
             for _,v in pairs(game:GetService("Players"):GetChildren()) do
-                if v.Character:FindFirstChild("rock") then
+                if v.Character:FindFirstChild("rock") ~= nil then
                     v.Character:FindFirstChild("rock").CanTouch = false;
                     v.Character:FindFirstChild("rock").CanCollide = false;
                 end
@@ -334,7 +453,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
             for _,v in pairs(game:GetService("Players"):GetChildren()) do
                 if v.Name ~= LocalPlayer.Name then
                     if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChild("Humanoid") ~= nil and LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0 and not debounce and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then 
-                        if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health > 0 and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v.Character:FindFirstChild("Torso").Transparency == 0 and v.Character:FindFirstChild("rock") == nil then
+                        if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health > 0 and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v.Character:FindFirstChild("rock") == nil and v.Character:FindFirstChild("BlockedV") == nil then
                             if (LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position-v.Character:FindFirstChild("HumanoidRootPart").Position).Magnitude < 30 then
                                 if LocalPlayer.Character:FindFirstChild("Diamond") then
                                     LocalPlayer.Character:FindFirstChild("Diamond"):Activate();
@@ -370,8 +489,11 @@ game:GetService("RunService").Heartbeat:Connect(function()
                                     LocalPlayer.Character:FindFirstChild("Stun"):Activate();
                                     game:GetService("ReplicatedStorage").HtStun:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
                                 elseif LocalPlayer.Character:FindFirstChild("「ZA HANDO」") then
-                                    LocalPlayer.Character:FindFirstChild("「ZA HANDO」"):Activate();
-                                    game:GetService("ReplicatedStorage").zhramt:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                    local za_hando = LocalPlayer.Character:FindFirstChild("「ZA HANDO」");
+                                    if string.sub(za_hando.Name, 1, 10) == "ZA HANDO" then 
+                                        LocalPlayer.Character:FindFirstChildOfClass("Tool"):Activate();
+                                        game:GetService("ReplicatedStorage").zhramt:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                    end
                                 elseif LocalPlayer.Character:FindFirstChild("Pusher") then
                                     LocalPlayer.Character:FindFirstChild("Pusher"):Activate();
                                     game:GetService("ReplicatedStorage").PusherHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
@@ -477,7 +599,6 @@ game:GetService("RunService").Heartbeat:Connect(function()
             if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then
                 for _,v in pairs(game:GetService("Workspace"):GetChildren()) do
                     if v.Name == "Gift" and v.Transparency == 0 then
-                        --firetouchinterest(LocalPlayer.Character:FindFirstChild("HumanoidRootPart"), v);
                         LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = v.CFrame;
                     end
                 end
@@ -504,8 +625,26 @@ game:GetService("RunService").Heartbeat:Connect(function()
         
     pcall(function()
         if _G.AdminNotifier then
-            if game:GetService("Players"):FindFirstChild("PimGameFreak") or game:GetService("Players"):FindFirstChild("buffwagon") or game:GetService("Players"):FindFirstChild("Astronaxtic") or game:GetService("Players"):FindFirstChild("Villadyne") or ame:GetService("Players"):FindFirstChild("undeadtaIIie") then
-                LocalPlayer:Kick(" [dizy's script] Admin joined! Join on other server. ")
+            if game:GetService("Players"):FindFirstChild("PimGameFreak") or game:GetService("Players"):FindFirstChild("buffwagon") or game:GetService("Players"):FindFirstChild("Astronaxtic") or game:GetService("Players"):FindFirstChild("Villadyne") or game:GetService("Players"):FindFirstChild("undeadtaIIie") or game:GetService("Players"):FindFirstChild("L3fr3akyy") or game:GetService("Players"):FindFirstChild("moignon06") or game:GetService("Players"):FindFirstChild("Aleph_Zero1") or game:GetService("Players"):FindFirstChild("Adam_DK") then
+                LocalPlayer:Kick(" \n[dizy's script] \nAdmin joined! Join on other server. ")
+            end
+        end
+    end)
+
+    spawn(function()
+        if _G.ShowInvisPlrs then
+            for _,v in pairs(game:GetService("Players"):GetChildren()) do
+                if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health > 0 then
+                    if v.Character:FindFirstChild("Torso").Transparency == 1 then
+                        v.Character:FindFirstChild("Head")["Nametag"].Active = true; v.Character:FindFirstChild("Head")["Nametag"].Enabled = true;
+                        for _,x in pairs(v.Character:GetChildren()) do
+                            if x:IsA("Part") and x.Transparency == 1 and x.Name ~= "HumanoidRootPart" then
+                                x.Transparency = 0.4;
+                                x.CanCollide = true;
+                            end
+                        end
+                    end
+                end
             end
         end
     end)
