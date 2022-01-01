@@ -199,7 +199,7 @@ tab5:Button("TP to Lobby", function()
 end)
 
 spawn(function()
-    while wait(0.5) do
+    while wait(0.75) do
         pcall(function()
             if _G.ReverseGloveGodmode then
                 if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then
@@ -253,7 +253,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
 
     spawn(function()
         if _G.GoldenGodmode then
-            if LocalPlayer.Character ~= nil and LocalPlayer.Character:WaitForChild("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then
+            if LocalPlayer.Character ~= nil and LocalPlayer.Character:WaitForChild("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:FindFirstChild("isInArena") ~= nil and LocalPlayer.Character:FindFirstChild("isInArena").Value == true then
                 for _,v in pairs(LocalPlayer.Character:GetChildren()) do
                     if v:IsA("Part") then
                         if v.Color ~= Color3.fromRGB(255,255,0) then
@@ -445,6 +445,12 @@ game:GetService("RunService").Heartbeat:Connect(function()
                     v.Character:FindFirstChild("rock").CanCollide = false;
                 end
             end
+            
+            for _,b in pairs(game:GetService("Workspace"):GetChildren()) do
+                if b:IsA("Part") and b:FindFirstChild("SelectionBox") ~= nil and b:FindFirstChild("Sound") ~= nil and b:FindFirstChild("SelectionBox").Color == Color3.fromRGB(84, 255, 255) then
+                    b.CanCollide = false;
+                end
+            end
         end
     end)
 
@@ -481,7 +487,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
                                     game:GetService("ReplicatedStorage").DiceHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
                                 elseif LocalPlayer.Character:FindFirstChild("Ghost") then
                                     LocalPlayer.Character:FindFirstChild("Ghost"):Activate();
-                                    game:GetService("ReplicatedStorage").GhostHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                    game:GetService("ReplicatedStorage").GhostHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"], true);
                                 elseif LocalPlayer.Character:FindFirstChild("Thanos") then
                                     LocalPlayer.Character:FindFirstChild("Thanos"):Activate();
                                     game:GetService("ReplicatedStorage").ThanosHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
@@ -570,6 +576,18 @@ game:GetService("RunService").Heartbeat:Connect(function()
                                 elseif LocalPlayer.Character:FindFirstChild("obama") then
                                     LocalPlayer.Character:FindFirstChild("obama"):Activate();
                                     game:GetService("ReplicatedStorage").Obamahit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                elseif LocalPlayer.Character:FindFirstChild("Pull") then
+                                    LocalPlayer.Character:FindFirstChild("Pull"):Activate();
+                                    game:GetService("ReplicatedStorage").PullHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                elseif LocalPlayer.Character:FindFirstChild("Phase") then
+                                    LocalPlayer.Character:FindFirstChild("Phase"):Activate();
+                                    game:GetService("ReplicatedStorage").PhaseH:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                elseif LocalPlayer.Character:FindFirstChild("The Flex") then
+                                    LocalPlayer.Character:FindFirstChild("The Flex"):Activate();
+                                    game:GetService("ReplicatedStorage").FlexHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                elseif LocalPlayer.Character:FindFirstChild("Error") then
+                                    LocalPlayer.Character:FindFirstChild("Error"):Activate();
+                                    game:GetService("ReplicatedStorage").Errorhit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
                                 end
                                 debounce = true;
                                 delay(_G.KADelay, function()
