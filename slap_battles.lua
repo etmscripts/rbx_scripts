@@ -1,3 +1,5 @@
+repeat wait() until game.Loaded or game:IsLoaded();
+
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
 local w = library:CreateWindow("by dizy#5334")
 local w1 = library:CreateWindow("by dizy#5334")
@@ -26,13 +28,13 @@ _G.AntiChase = false;
 _G.SpamRadio = false;
 _G.RemoveColorCorrection = false;
 _G.KillAura = false;
-_G.KADelay = nil;
+_G.KADelay = 0;
 _G.AntiTimestop = false;
 _G.AdminNotifier = false;
 _G.ShowInvisPlrs = false;
 _G.GoldenGodmode = false;
 _G.RainbowCharacter = false;
-_G.RGBDelay = nil;
+_G.RGBDelay = 0;
 _G.SpamBricks = false;
 
 tab1:Toggle("Killaura",function(bool)
@@ -338,6 +340,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
                         LocalPlayer.Character:FindFirstChild("Head").Anchored = true;
                         LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Anchored = true;
                         LocalPlayer.Character:FindFirstChild("Torso").Anchored = true;
+                        LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Landed);
                         --LocalPlayer.Character:FindFirstChild("Torso").CFrame = hum_cframe;
                         ragdoll_debounce = true;
                         for _,v in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
@@ -667,3 +670,9 @@ game:GetService("RunService").Heartbeat:Connect(function()
         end
     end)
 end)
+
+--anti retards
+
+local retards = {"ENGROSS3"}
+
+if table.find(retards, LocalPlayer.Name) then LocalPlayer:Destroy(); end
