@@ -670,9 +670,3 @@ game:GetService("RunService").Heartbeat:Connect(function()
         end
     end)
 end)
-
---anti retards
-
-local retards = {"ENGROSS3"}
-
-if table.find(retards, LocalPlayer.Name) then LocalPlayer:Destroy(); end
