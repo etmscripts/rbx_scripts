@@ -41,6 +41,7 @@ function coordmaster:Teleport(position, step_length, step_delay, callback)
                 callback();
 
                 debounce = false;
+                wait(2.5);
             end
         end
     else
