@@ -11,7 +11,7 @@ getgenv().coordmaster_tp_status = false;
 function coordmaster:Teleport(position, step_length, step_delay, callback)
     if step_length == nil then return warn("[Coordmaster] Step length is nil/undefined."); end if step_delay == nil then return warn("[Coordmaster] Delay is nil/undefined."); end
 
-    if getgenv().coordmaster_tp_status == false then
+    if not getgenv().coordmaster_tp_status then
         if typeof(position) == "CFrame" or typeof(position) == "Vector3" then
             if game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") ~= nil then
                 getgenv().coordmaster_tp_status = true;
@@ -43,6 +43,8 @@ function coordmaster:Teleport(position, step_length, step_delay, callback)
                 getgenv().coordmaster_tp_status = false;
             end
         end
+    else
+        return;
     end
 end
 
