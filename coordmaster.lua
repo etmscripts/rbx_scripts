@@ -6,12 +6,16 @@
 ]]
 
 local coordmaster = {};
+getgenv().coordmaster_tp_status = false;
 
 function coordmaster:Teleport(position, step_length, step_delay, callback)
-    --if typeof(position) ~= "CFrame" or typeof(position) ~= "Vector3" then return warn("[Coordmaster] Position is undefined."); end
+    if getgenv().coord_master_tp_status == true then return warn("[Coordmaster] Teleport is already working!") end
+    if typeof(position) ~= "CFrame" or typeof(position) ~= "Vector3" then return warn("[Coordmaster] Position is undefined."); end
     if step_length == nil then return warn("[Coordmaster] Step length is nil/undefined."); end if step_delay == nil then return warn("[Coordmaster] Delay is nil/undefined."); end
     
     if game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+        getgenv().coordmaster_tp_status = true;
+
         local current_position = game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position;
         local steps = math.floor(math.sqrt((position.X - current_position.X) ^ 2 + (position.Y - current_position.Y) ^ 2 + (position.Z - current_position.Z) ^ 2 ) / step_length);
         local path = {};
@@ -35,6 +39,8 @@ function coordmaster:Teleport(position, step_length, step_delay, callback)
         game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Anchored = false;
         wait(0.5);
         callback();
+        
+        getgenv().coordmaster_tp_status = false;
     end
 end
 
