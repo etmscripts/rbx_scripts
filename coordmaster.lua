@@ -37,7 +37,7 @@ function coordmaster:Teleport(position, step_length, step_delay, callback)
                 end
 
                 game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Anchored = false;
-                wait(0.5);
+                wait(2);
                 callback();
 
                 getgenv().coordmaster_tp_status = false;
