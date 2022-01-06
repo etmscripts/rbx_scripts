@@ -8,6 +8,7 @@
 local coordmaster = {};
 
 function coordmaster:Teleport(position, step_length, step_delay, callback)
+    print(typeof(position))
     if typeof(position) ~= "CFrame" or type(position) ~= "Vector3" then return warn("[Coordmaster] Position is undefined."); end
     if step_length == nil then return warn("[Coordmaster] Step length is nil/undefined."); end if step_delay == nil then return warn("[Coordmaster] Delay is nil/undefined."); end
     
