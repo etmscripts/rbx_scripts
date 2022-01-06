@@ -8,7 +8,7 @@
 local coordmaster = {};
 
 function coordmaster:Teleport(position, step_length, step_delay, callback)
-    if typeof(position) ~= "CFrame" or typeof(position) ~= "Vector3" then return warn("[Coordmaster] Position is undefined."); end
+    --if typeof(position) ~= "CFrame" or typeof(position) ~= "Vector3" then return warn("[Coordmaster] Position is undefined."); end
     if step_length == nil then return warn("[Coordmaster] Step length is nil/undefined."); end if step_delay == nil then return warn("[Coordmaster] Delay is nil/undefined."); end
     
     if game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") ~= nil then
