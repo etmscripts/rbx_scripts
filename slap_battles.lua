@@ -478,6 +478,10 @@ game:GetService("RunService").Heartbeat:Connect(function()
                     p.CanCollide = false;
                     p.CanTouch = false;
                     p.Transparency = 0.8;
+                elseif p.Name == "Turret" then
+                    p:FindFirstChild("HingePart"):FindFirstChild("Glove").CanTouch = false;
+                    p:FindFirstChild("HingePart"):FindFirstChild("Glove").CanCollide = false;
+                    p:FindFirstChild("HingePart"):FindFirstChild("Glove").Transparency = 0.5;
                 end
             end
                     
