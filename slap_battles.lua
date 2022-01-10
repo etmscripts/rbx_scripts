@@ -157,9 +157,8 @@ tab4:Bind("Force Ability",Enum.KeyCode.X,function()
         game:GetService("ReplicatedStorage").TimestopJump:FireServer();
         game:GetService("ReplicatedStorage").Timestopchoir:FireServer();
         game:GetService("ReplicatedStorage").Timestop:FireServer();
-    elseif LocalPlayer.Character:FindFirstChild("Ghost") ~= nil then
-        game:GetService("ReplicatedStorage").Ghostinvisibilitydeactivated:FireServer();
-        game:GetService("ReplicatedStorage").Ghostinvisibilityactivated:FireServer();
+    elseif tostring(LocalPlayer["leaderstats"]["Glove"].Value) == "Ghost" then
+        game:GetService("ReplicatedStorage").Ghostinvisibilityactivated:FireServer()
     elseif LocalPlayer.Character:FindFirstChild("Mail") ~= nil and ability_debounce == false then
         game:GetService("ReplicatedStorage").MailSend:FireServer();
 
