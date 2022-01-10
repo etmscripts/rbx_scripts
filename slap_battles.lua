@@ -655,7 +655,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
     spawn(function()
         if getgenv().ShowInvisPlrs then
             for _,v in pairs(game:GetService("Players"):GetChildren()) do
-                if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health > 0 then
+                if v.Name ~= LocalPlayer.Name and v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health > 0 then
                     if v.Character:FindFirstChild("Torso").Transparency == 1 then
                         for _,x in pairs(v.Character:GetChildren()) do
                             if x:IsA("Part") and x.Transparency == 1 and x.Name ~= "HumanoidRootPart" then
