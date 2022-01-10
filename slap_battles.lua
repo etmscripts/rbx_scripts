@@ -15,117 +15,118 @@ local debounce = false;
 local ragdoll_debounce = false;
 local ragdoll_debounce_1 = 0;
 local event_debounce = false;
+local ability_debounce = false;
 
-_G.InfTimestop = false;
-_G.PickUpGifts = false;
-_G.GiftsEsp = false;
-_G.GColor = Color3.fromRGB(111, 255, 0);
-_G.HandleEsp = false;
-_G.HColor = Color3.fromRGB(0, 166, 255);
-_G.SizeOverride = false;
-_G.PreventRagdoll = false;
-_G.AntiChase = false;
-_G.SpamRadio = false;
-_G.RemoveColorCorrection = false;
-_G.KillAura = false;
-_G.KADelay = 0;
-_G.AntiTimestop = false;
-_G.AdminNotifier = false;
-_G.ShowInvisPlrs = false;
-_G.GoldenGodmode = false;
-_G.RainbowCharacter = false;
-_G.RGBDelay = 0;
-_G.SpamBricks = false;
+getgenv().InfTimestop = false;
+getgenv().PickUpGifts = false;
+getgenv().GiftsEsp = false;
+getgenv().GColor = Color3.fromRGB(111, 255, 0);
+getgenv().HandleEsp = false;
+getgenv().HColor = Color3.fromRGB(0, 166, 255);
+getgenv().SizeOverride = false;
+getgenv().PreventRagdoll = false;
+getgenv().AntiChase = false;
+getgenv().SpamRadio = false;
+getgenv().HideVisuals = false;
+getgenv().KillAura = false;
+getgenv().KADelay = 0;
+getgenv().AntiTimestop = false;
+getgenv().AdminNotifier = false;
+getgenv().ShowInvisPlrs = false;
+getgenv().GoldenGodmode = false;
+getgenv().RainbowCharacter = false;
+getgenv().RGBDelay = 0;
+getgenv().SpamBricks = false;
 
 tab1:Toggle("Killaura",function(bool)
     shared.toggle = bool;
-    _G.KillAura = bool;
+    getgenv().KillAura = bool;
 end)
 
 tab1:Slider("Hit Delay",{
-    min = 0;
+    min = 0.05;
     max = 5;
     precise = true;
 },function(value)
-    _G.KADelay = value;
+    getgenv().KADelay = value;
 end)
 
 tab1:Toggle("Anti Ragdoll",function(bool)
     shared.toggle = bool;
-    _G.PreventRagdoll = bool;
+    getgenv().PreventRagdoll = bool;
 end)
 
 tab1:Toggle("Anti Chase",function(bool)
     shared.toggle = bool;
-    _G.AntiChase = bool;
+    getgenv().AntiChase = bool;
 end)
 
 tab1:Toggle("Anti Timestop",function(bool)
     shared.toggle = bool;
-    _G.AntiTimestop = bool;
+    getgenv().AntiTimestop = bool;
 end)
 
 tab1:Toggle("Glove Reach",function(bool)
     shared.toggle = bool;
-    _G.SizeOverride = bool;
+    getgenv().SizeOverride = bool;
 end)
 
 tab2:Toggle("Gifts ESP",function(bool)
     shared.toggle = bool;
-    _G.GiftsEsp = bool;
+    getgenv().GiftsEsp = bool;
 end)
 
-tab2:ColorPicker("Gift Color",_G.GColor,function(color) --Default color
-    _G.GColor = color;
+tab2:ColorPicker("Gift Color",getgenv().GColor,function(color) --Default color
+    getgenv().GColor = color;
 end)
 
 tab2:Toggle("Reach ESP",function(bool)
     shared.toggle = bool;
-    _G.HandleEsp = bool;
+    getgenv().HandleEsp = bool;
 end)
 
-tab2:ColorPicker("Reach Color",_G.HColor,function(color) --Default color
-    _G.HColor = color;
+tab2:ColorPicker("Reach Color",getgenv().HColor,function(color) --Default color
+    getgenv().HColor = color;
 end)
 
 tab2:Toggle("Hide Visuals",function(bool)
     shared.toggle = bool;
-    _G.RemoveColorCorrection = bool;
+    getgenv().HideVisuals = bool;
 end)
 
 tab2:Toggle("Show Invisible Players",function(bool)
     shared.toggle = bool;
-    _G.ShowInvisPlrs = bool;
+    getgenv().ShowInvisPlrs = bool;
 end)
 
 tab2:Toggle("Admin Notifier",function(bool)
     shared.toggle = bool;
-    _G.AdminNotifier = bool;
+    getgenv().AdminNotifier = bool;
 end)
 
 tab3:Toggle("Pick Up Gifts",function(bool)
     shared.toggle = bool;
-    _G.PickUpGifts = bool;
+    getgenv().PickUpGifts = bool;
 end)
 
 tab3:Toggle("Spam Radio",function(bool)
     shared.toggle = bool;
-    _G.SpamRadio = bool;
+    getgenv().SpamRadio = bool;
 end)
 
 tab4:Toggle("Golden Godmode",function(bool)
     shared.toggle = bool;
-    _G.GoldenGodmode = bool;
+    getgenv().GoldenGodmode = bool;
 end)
 
 tab4:Toggle("Reverse Godmode",function(bool)
     shared.toggle = bool;
-    _G.ReverseGloveGodmode = bool;
+    getgenv().ReverseGloveGodmode = bool;
 end)
 
 tab4:Toggle("Rainbow Character",function(bool)
     shared.toggle = bool;
-    _G.RainbowCharacter = bool;
+    getgenv().RainbowCharacter = bool;
 end)
 
 tab4:Slider("Delay",{
@@ -133,42 +134,80 @@ tab4:Slider("Delay",{
     max = 1.5;
     precise = true;
 },function(value)
-    _G.RGBDelay = value;
+    getgenv().RGBDelay = value;
 end)
 
 tab4:Toggle("Loop Timestop",function(bool)
     shared.toggle = bool;
-    _G.InfTimestop = bool;
+    getgenv().InfTimestop = bool;
 end)
 
 tab4:Toggle("Spam Farts",function(bool)
     shared.toggle = bool;
-    _G.SpamFarts = bool;
+    getgenv().SpamFarts = bool;
 end)
 
 tab4:Toggle("Spam Bricks",function(bool)
     shared.toggle = bool;
-    _G.SpamBricks = bool;
+    getgenv().SpamBricks = bool;
 end)
 
-tab4:Bind("Force Timestop",Enum.KeyCode.X,function()
-    game:GetService("ReplicatedStorage").TimestopJump:FireServer();
-    game:GetService("ReplicatedStorage").Timestopchoir:FireServer();
-    game:GetService("ReplicatedStorage").Timestop:FireServer();
+tab4:Bind("Force Ability",Enum.KeyCode.X,function()
+    if LocalPlayer.Character:FindFirstChild("God's Hand") ~= nil then
+        game:GetService("ReplicatedStorage").TimestopJump:FireServer();
+        game:GetService("ReplicatedStorage").Timestopchoir:FireServer();
+        game:GetService("ReplicatedStorage").Timestop:FireServer();
+    elseif LocalPlayer.Character:FindFirstChild("Ghost") ~= nil then
+        game:GetService("ReplicatedStorage").Ghostinvisibilitydeactivated:FireServer();
+        game:GetService("ReplicatedStorage").Ghostinvisibilityactivated:FireServer();
+    elseif LocalPlayer.Character:FindFirstChild("Mail") ~= nil and ability_debounce == false then
+        game:GetService("ReplicatedStorage").MailSend:FireServer();
+
+        ability_debounce = true;
+        delay(5, function()
+            ability_debounce = false;
+        end)
+    elseif LocalPlayer.Character:FindFirstChild("Stun") ~= nil then
+        game:GetService("ReplicatedStorage").StunR:FireServer(game:GetService("Workspace")[LocalPlayer.Name]:FindFirstChild("Stun"));
+    elseif tostring(LocalPlayer["leaderstats"]["Glove"].Value) == "Swapper" and ability_debounce == false then
+        game:GetService("ReplicatedStorage").SLOC:FireServer();
+
+        ability_debounce = true;
+        delay(6, function()
+            ability_debounce = false;
+        end)
+    end
 end)
 
-tab4:Bind("Force Invisibility",Enum.KeyCode.Z,function()
-    game:GetService("ReplicatedStorage").Ghostinvisibilitydeactivated:FireServer();
-    game:GetService("ReplicatedStorage").Ghostinvisibilityactivated:FireServer();
-end)
+tab4:Label("Available Abilities:", {
+    TextSize = 20;
+    TextColor = Color3.fromRGB(210,210,210);
+    BgColor = Color3.fromRGB(40,40,40);
+})
 
-tab4:Bind("Force Mail",Enum.KeyCode.E,function()
-    game:GetService("ReplicatedStorage").MailSend:FireServer();
-end)
+tab4:Label("Timestop (no delay)", {
+    TextSize = 18;
+    TextColor = Color3.fromRGB(210,210,210);
+    BgColor = Color3.fromRGB(40,40,40);
+})
 
-tab4:Bind("Force EMP",Enum.KeyCode.R,function()
-    game:GetService("ReplicatedStorage").StunR:FireServer(game:GetService("Workspace")[LocalPlayer.Name].Stun);
-end)
+tab4:Label("Invisibility (no delay)", {
+    TextSize = 18;
+    TextColor = Color3.fromRGB(210,210,210);
+    BgColor = Color3.fromRGB(40,40,40);
+})
+
+tab4:Label("Mail (5 secs delay)", {
+    TextSize = 18;
+    TextColor = Color3.fromRGB(210,210,210);
+    BgColor = Color3.fromRGB(40,40,40);
+})
+
+tab4:Label("Swap (6 secs delay)", {
+    TextSize = 18;
+    TextColor = Color3.fromRGB(210,210,210);
+    BgColor = Color3.fromRGB(40,40,40);
+})
 
 tab3:Button("Get 250 Kills",function()
     for i=1,250 do
@@ -188,8 +227,8 @@ tab3:Button("Brazil Badge", function()
     firetouchinterest(game:GetService("Workspace")["Lobby"]["brazil"]["portal"]);
 end)
 
-tab3:Button("Obama Glove Badge", function()
-    fireclickdetector(game:GetService("Workspace")["Lobby"]["Obama"].ClickDetector);
+tab3:Button("Error Glove Badge", function()
+    fireclickdetector(game:GetService("Workspace")["Lobby"]["Error"].ClickDetector);
 end)
 
 tab5:Button("TP to Arena", function()
@@ -203,7 +242,7 @@ end)
 spawn(function()
     while wait(0.75) do
         pcall(function()
-            if _G.ReverseGloveGodmode then
+            if getgenv().ReverseGloveGodmode then
                 if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then
                     if LocalPlayer.Character:FindFirstChild("Left Arm"):FindFirstChildOfClass("SelectionBox") == nil or LocalPlayer.Character:FindFirstChild("Right Arm"):FindFirstChildOfClass("SelectionBox") == nil or LocalPlayer.Character:FindFirstChild("Left Leg"):FindFirstChildOfClass("SelectionBox") == nil or LocalPlayer.Character:FindFirstChild("Right Leg"):FindFirstChildOfClass("SelectionBox") == nil then
                         game:GetService("ReplicatedStorage").ReverseAbility:FireServer();
@@ -217,10 +256,10 @@ spawn(function()
 end)
 
 spawn(function()
-    while wait(_G.RGBDelay) do
+    while wait(getgenv().RGBDelay) do
         pcall(function()
-            if _G.RainbowCharacter then
-                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then
+            if getgenv().RainbowCharacter then
+                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:FindFirstChild("isInArena") ~= nil and LocalPlayer.Character:FindFirstChild("isInArena").Value == true then
                     game:GetService("ReplicatedStorage").Goldify:FireServer(false, BrickColor.random());
                 end
             end
@@ -229,10 +268,10 @@ spawn(function()
 end)
 
 spawn(function()
-    while wait(2.5) do
+    while wait(4) do
         pcall(function()
-            if _G.SpamBricks then
-                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then
+            if getgenv().SpamBricks then
+                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:FindFirstChild("isInArena") ~= nil and LocalPlayer.Character:FindFirstChild("isInArena").Value == true then
                     game:GetService("ReplicatedStorage").lbrick:FireServer()
                 end
             end
@@ -242,7 +281,7 @@ end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
     spawn(function()
-        if _G.InfTimestop then
+        if getgenv().InfTimestop then
             if LocalPlayer.Character ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
                 if LocalPlayer.Character.isInArena.Value == true and game:GetService("Workspace"):FindFirstChild("universaltimestop") == nil then
                     game:GetService("ReplicatedStorage").TimestopJump:FireServer();
@@ -254,7 +293,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
 
     spawn(function()
-        if _G.GoldenGodmode then
+        if getgenv().GoldenGodmode then
             if LocalPlayer.Character ~= nil and LocalPlayer.Character:WaitForChild("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:FindFirstChild("isInArena") ~= nil and LocalPlayer.Character:FindFirstChild("isInArena").Value == true then
                 for _,v in pairs(LocalPlayer.Character:GetChildren()) do
                     if v:IsA("Part") then
@@ -268,7 +307,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
 
     spawn(function()
-        if _G.SpamFarts then
+        if getgenv().SpamFarts then
             if LocalPlayer.Character ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
                 game:GetService("ReplicatedStorage").Fart:FireServer();
             end
@@ -276,7 +315,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
 
     spawn(function()
-        if _G.HandleEsp then
+        if getgenv().HandleEsp then
             if LocalPlayer.Character ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:WaitForChild("Torso").Transparency == 0 then
                 for _,v in pairs(LocalPlayer.Character:GetChildren()) do
                     if v:IsA("Tool") and v.Name ~= "Radio" then
@@ -287,7 +326,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
                                 box.Size = v:FindFirstChild("Glove").Size;
                                 box.AlwaysOnTop = true;
                                 box.Transparency = 0.7;
-                                box.Color3 = _G.HColor;
+                                box.Color3 = getgenv().HColor;
                             elseif v:FindFirstChildOfClass("BoxHandleAdornment") ~= nil then
                                 if v:FindFirstChildOfClass("BoxHandleAdornment").Size ~= v:FindFirstChild("Glove").Size then
                                     v:FindFirstChildOfClass("BoxHandleAdornment"):Destroy();
@@ -297,7 +336,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
                     end
                 end
             end
-        elseif not _G.HandleEsp then
+        elseif not getgenv().HandleEsp then
             if LocalPlayer.Character ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:WaitForChild("Torso").Transparency == 0 then
                 for _,v in pairs(LocalPlayer.Character:GetChildren()) do
                     if v:IsA("Tool") and v.Name ~= "Radio" then
@@ -313,7 +352,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
 
     spawn(function()
-        if _G.SizeOverride then
+        if getgenv().SizeOverride then
             if LocalPlayer.Character ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:WaitForChild("Torso").Transparency == 0 then
                 for _,v in pairs(LocalPlayer.Character:GetChildren()) do
                     if v:IsA("Tool") and v.Name ~= "Radio" then
@@ -329,7 +368,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
 
     pcall(function()
-        if _G.PreventRagdoll then
+        if getgenv().PreventRagdoll then
             if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:WaitForChild("Torso").Transparency == 0 then
                 if LocalPlayer.Character:FindFirstChildOfClass("Humanoid").PlatformStand == true then LocalPlayer.Character:FindFirstChildOfClass("Humanoid").PlatformStand = false; end
                 if LocalPlayer.Character:WaitForChild("Ragdolled") ~= nil then
@@ -349,7 +388,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
                                     if r:IsA("BallSocketConstrait") or r:IsA("BodyVelocity") or r:IsA("BodyAngularVelocity") then
                                         r:Destroy();
                                     elseif r:IsA("Attachment") then
-                                        if r.Name == "a0" or r.Name == "a1" or r.Name == "torsoweld" then
+                                        if r.Name == "a0" or r.Name == "a1" or r.Name == "torsoweld" or r.Name == "x1" then
                                             r:Destroy();
                                         end
                                     end
@@ -373,7 +412,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
 
     spawn(function()
-        if _G.SpamRadio then
+        if getgenv().SpamRadio then
             if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:WaitForChild("Torso").Transparency == 0 then
                 if LocalPlayer.Backpack:FindFirstChild("Radio") ~= nil then
                     LocalPlayer.Backpack:FindFirstChild("Radio")["Handle"]["Sound"]["ID"].Value = 5361902748;
@@ -388,7 +427,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
 
     spawn(function()
-        if _G.AntiChase then
+        if getgenv().AntiChase then
             if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:WaitForChild("Torso").Transparency == 0 then
                 if LocalPlayer.Character:FindFirstChild("CHASED") or LocalPlayer.Character:FindFirstChild("CHASE")  then
                     for _,v in pairs(LocalPlayer.Character:GetChildren()) do
@@ -404,7 +443,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
 
     pcall(function()
-        if _G.AntiTimestop then
+        if getgenv().AntiTimestop then
             if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:WaitForChild("Torso").Transparency == 0 then
                 if game:GetService("Workspace"):FindFirstChild("universaltimestop") ~= nil then
                     LocalPlayer.Character:FindFirstChildOfClass("Humanoid").PlatformStand = false;
@@ -423,7 +462,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
 
     pcall(function()
-        if _G.RemoveColorCorrection then
+        if getgenv().HideVisuals then
             if game:GetService("Lighting"):FindFirstChildOfClass("ColorCorrectionEffect") then
                 game:GetService("Lighting"):FindFirstChildOfClass("ColorCorrectionEffect"):Destroy();
             end
@@ -458,152 +497,108 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
 
     pcall(function()
-        if _G.KillAura then
+        if getgenv().KillAura then
             for _,v in pairs(game:GetService("Players"):GetChildren()) do
                 if v.Name ~= LocalPlayer.Name then
                     if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChild("Humanoid") ~= nil and LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0 and not debounce and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then 
                         if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health > 0 and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v.Character:FindFirstChild("rock") == nil then
                             if v.Character:FindFirstChild("BlockedV") ~= nil then if v.Character:FindFirstChild("BlockedV").Value == game:GetService("Players").LocalPlayer.Name then return; end end
                             if (LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position-v.Character:FindFirstChild("HumanoidRootPart").Position).Magnitude < 30 then
-                                if LocalPlayer.Character:FindFirstChild("Diamond") then
-                                    LocalPlayer.Character:FindFirstChild("Diamond"):Activate();
-                                    game:GetService("ReplicatedStorage").DiamondHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Extended") then
-                                    LocalPlayer.Character:FindFirstChild("Extended"):Activate();
-                                    game:GetService("ReplicatedStorage").ExtendedHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Brick") then
-                                    LocalPlayer.Character:FindFirstChild("Brick"):Activate();
-                                    game:GetService("ReplicatedStorage").BrickHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Snow") then
-                                    LocalPlayer.Character:FindFirstChild("Snow"):Activate();
-                                    game:GetService("ReplicatedStorage").SnowHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Flash") then
-                                    LocalPlayer.Character:FindFirstChild("Flash"):Activate();
-                                    game:GetService("ReplicatedStorage").FlashHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Swapper") then
-                                    LocalPlayer.Character:FindFirstChild("Swapper"):Activate();
-                                    game:GetService("ReplicatedStorage").SwapperHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Bull") then
-                                    LocalPlayer.Character:FindFirstChild("Bull"):Activate();
-                                    game:GetService("ReplicatedStorage").BullHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Dice") then
-                                    LocalPlayer.Character:FindFirstChild("Dice"):Activate();
-                                    game:GetService("ReplicatedStorage").DiceHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Ghost") then
-                                    LocalPlayer.Character:FindFirstChild("Ghost"):Activate();
-                                    game:GetService("ReplicatedStorage").GhostHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"], true);
-                                elseif LocalPlayer.Character:FindFirstChild("Thanos") then
-                                    LocalPlayer.Character:FindFirstChild("Thanos"):Activate();
-                                    game:GetService("ReplicatedStorage").ThanosHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Stun") then
-                                    LocalPlayer.Character:FindFirstChild("Stun"):Activate();
-                                    game:GetService("ReplicatedStorage").HtStun:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("「ZA HANDO」") then
-                                    local za_hando = LocalPlayer.Character:FindFirstChild("「ZA HANDO」");
-                                    if string.sub(za_hando.Name, 1, 10) == "ZA HANDO" then 
-                                        LocalPlayer.Character:FindFirstChildOfClass("Tool"):Activate();
-                                        game:GetService("ReplicatedStorage").zhramt:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                for _,glove in pairs(LocalPlayer.Character:GetChildren()) do
+                                    if glove:IsA("Tool") and glove.Name ~= "Radio" and glove.Name ~= "Spectator" then
+                                        glove:Activate();
+
+                                        if glove.Name == "Default" then
+                                            glove:FindFirstChild("Glove").Size = Vector3.new(50.5, 30.5, 30.7);
+                                        elseif glove.Name == "Diamond" or glove.Name == "MEGAROCK" then
+                                            game:GetService("ReplicatedStorage").DiamondHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Extended" then
+                                            glove:FindFirstChild("Glove").Size = Vector3.new(50.5, 30.5, 30.7);
+                                        elseif glove.Name == "Brick" then
+                                            game:GetService("ReplicatedStorage").BrickHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Snow" then
+                                            game:GetService("ReplicatedStorage").SnowHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Flash" then
+                                            game:GetService("ReplicatedStorage").FlashHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Swapper" then
+                                            glove:FindFirstChild("Glove").Size = Vector3.new(50.5, 30.5, 30.7);
+                                        elseif glove.Name == "Bull" then
+                                            game:GetService("ReplicatedStorage").BullHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Dice" then
+                                            game:GetService("ReplicatedStorage").DiceHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Ghost" then
+                                            game:GetService("ReplicatedStorage").GhostHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Thanos" then
+                                            game:GetService("ReplicatedStorage").ThanosHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Stun" then
+                                            game:GetService("ReplicatedStorage").HtStun:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif string.sub(glove.Name, 1, (string.len(glove.Name)-1)) == "ZA HANDO" then
+                                            game:GetService("ReplicatedStorage").zhramt:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Pusher" then
+                                            game:GetService("ReplicatedStorage").PusherHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Space" then
+                                            game:GetService("ReplicatedStorage").HtSpace:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Dream" then
+                                            game:GetService("ReplicatedStorage").Dreamhit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Mail" then
+                                            game:GetService("ReplicatedStorage").MailHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Golden" then
+                                            game:GetService("ReplicatedStorage").GoldenHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Cheeky" then
+                                            game:GetService("ReplicatedStorage").CheekyHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Reaper" then
+                                            game:GetService("ReplicatedStorage").ReaperHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Replica" then
+                                            game:GetService("ReplicatedStorage").ReplicaHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Defense" then
+                                            game:GetService("ReplicatedStorage").DefenseHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Killstreak" then
+                                            glove:FindFirstChild("Glove").Size = Vector3.new(50.5, 30.5, 30.7);
+                                        elseif glove.Name == "Reverse" then
+                                            game:GetService("ReplicatedStorage").ReverseHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Shukuchi" then
+                                            game:GetService("ReplicatedStorage").ShukuchiHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Duelist" then
+                                            game:GetService("ReplicatedStorage").DuelistHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "woah" then
+                                            game:GetService("ReplicatedStorage").woahHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Ice" then
+                                            game:GetService("ReplicatedStorage").IceHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Adios" then
+                                            game:GetService("ReplicatedStorage").hitAdios:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "OVERKILL" then
+                                            game:GetService("ReplicatedStorage").Overkillhit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Acrobat" then
+                                            game:GetService("ReplicatedStorage").AcHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Plague" then
+                                            game:GetService("ReplicatedStorage").PlagueHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Hallow Jack" then
+                                            game:GetService("ReplicatedStorage").HallowHIT:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "[REDACTED]" then
+                                            game:GetService("ReplicatedStorage").ReHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "bus" then
+                                            game:GetService("ReplicatedStorage").hitbus:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Error" then
+                                            game:GetService("ReplicatedStorage").Errorhit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Pull" then
+                                            game:GetService("ReplicatedStorage").PullHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Phase" then
+                                            game:GetService("ReplicatedStorage").PhaseH:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Blocked" then
+                                            game:GetService("ReplicatedStorage").BlockedHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Engineer" then
+                                            game:GetService("ReplicatedStorage").engiehit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "God's Hand" then
+                                            glove:FindFirstChild("Glove").Size = Vector3.new(50.5, 30.5, 30.7);
+                                        elseif glove.Name == "The Flex" then
+                                            game:GetService("ReplicatedStorage").FlexHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Mitten" then
+                                            game:GetService("ReplicatedStorage").MittenHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        end
                                     end
-                                elseif LocalPlayer.Character:FindFirstChild("Pusher") then
-                                    LocalPlayer.Character:FindFirstChild("Pusher"):Activate();
-                                    game:GetService("ReplicatedStorage").PusherHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Space") then
-                                    LocalPlayer.Character:FindFirstChild("Space"):Activate();
-                                    game:GetService("ReplicatedStorage").HtSpace:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Dream") then
-                                    LocalPlayer.Character:FindFirstChild("Dream"):Activate();
-                                    game:GetService("ReplicatedStorage").Dreamhit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Mail") then
-                                    LocalPlayer.Character:FindFirstChild("Mail"):Activate();
-                                    game:GetService("ReplicatedStorage").MailHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Golden") then
-                                    LocalPlayer.Character:FindFirstChild("Golden"):Activate();
-                                    game:GetService("ReplicatedStorage").GoldenHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Cheeky") then
-                                    LocalPlayer.Character:FindFirstChild("Cheeky"):Activate();
-                                    game:GetService("ReplicatedStorage").CheekyHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Reaper") then
-                                    LocalPlayer.Character:FindFirstChild("Reaper"):Activate();
-                                    game:GetService("ReplicatedStorage").ReaperHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Replica") then
-                                    LocalPlayer.Character:FindFirstChild("Replica"):Activate();
-                                    game:GetService("ReplicatedStorage").ReplicaHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Defense") then
-                                    LocalPlayer.Character:FindFirstChild("Defense"):Activate();
-                                    game:GetService("ReplicatedStorage").DefenseHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Killstreak") then
-                                    local kills = string.sub(LocalPlayer.PlayerGui:FindFirstChild("Kills"):FindFirstChildOfClass("TextLabel").Text, 0, 7);
-                                    LocalPlayer.Character:FindFirstChild("Killstreak"):Activate();
-                                    game:GetService("ReplicatedStorage").KSHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"], kills);
-                                elseif LocalPlayer.Character:FindFirstChild("Reverse") then
-                                    LocalPlayer.Character:FindFirstChild("Reverse"):Activate();
-                                    game:GetService("ReplicatedStorage").ReverseHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Shukuchi") then
-                                    LocalPlayer.Character:FindFirstChild("Shukuchi"):Activate();
-                                    game:GetService("ReplicatedStorage").ShukuchiHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Duelist") then
-                                    LocalPlayer.Character:FindFirstChild("Duelist"):Activate();
-                                    game:GetService("ReplicatedStorage").DuelistHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("woah") then
-                                    LocalPlayer.Character:FindFirstChild("woah"):Activate();
-                                    game:GetService("ReplicatedStorage").woahHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Ice") then
-                                    LocalPlayer.Character:FindFirstChild("Ice"):Activate();
-                                    game:GetService("ReplicatedStorage").IceHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Adios") then
-                                    LocalPlayer.Character:FindFirstChild("Adios"):Activate();
-                                    game:GetService("ReplicatedStorage").hitAdios:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("God's Hand") then
-                                    LocalPlayer.Character:FindFirstChild("God's Hand"):Activate();
-                                    game:GetService("ReplicatedStorage").Godshand:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("OVERKILL") then
-                                    LocalPlayer.Character:FindFirstChild("OVERKILL"):Activate();
-                                    game:GetService("ReplicatedStorage").Overkillhit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Acrobat") then
-                                    LocalPlayer.Character:FindFirstChild("Acrobat"):Activate();
-                                    game:GetService("ReplicatedStorage").AcHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("MEGAROCK") then
-                                    LocalPlayer.Character:FindFirstChild("MEGAROCK"):Activate();
-                                    game:GetService("ReplicatedStorage").DiamondHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Plague") then
-                                    LocalPlayer.Character:FindFirstChild("Plague"):Activate();
-                                    game:GetService("ReplicatedStorage").PlagueHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Hallow Jack") then
-                                    LocalPlayer.Character:FindFirstChild("Hallow Jack"):Activate();
-                                    game:GetService("ReplicatedStorage").HallowHIT:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("[REDACTED]") then
-                                    LocalPlayer.Character:FindFirstChild("[REDACTED]"):Activate();
-                                    game:GetService("ReplicatedStorage").ReHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("bus") then
-                                    LocalPlayer.Character:FindFirstChild("bus"):Activate();
-                                    game:GetService("ReplicatedStorage").hitbus:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("obama") then
-                                    LocalPlayer.Character:FindFirstChild("obama"):Activate();
-                                    game:GetService("ReplicatedStorage").Obamahit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Pull") then
-                                    LocalPlayer.Character:FindFirstChild("Pull"):Activate();
-                                    game:GetService("ReplicatedStorage").PullHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Phase") then
-                                    LocalPlayer.Character:FindFirstChild("Phase"):Activate();
-                                    game:GetService("ReplicatedStorage").PhaseH:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("The Flex") then
-                                    LocalPlayer.Character:FindFirstChild("The Flex"):Activate();
-                                    game:GetService("ReplicatedStorage").FlexHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                elseif LocalPlayer.Character:FindFirstChild("Error") then
-                                    LocalPlayer.Character:FindFirstChild("Error"):Activate();
-                                    game:GetService("ReplicatedStorage").Errorhit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
                                 end
                                 debounce = true;
-                                delay(_G.KADelay, function()
-                                    debounce = false;
-                                end)
-                            elseif (LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position-v.Character:FindFirstChild("HumanoidRootPart").Position).Magnitude < 10 then
-                                if LocalPlayer.Character:FindFirstChild("Default") then
-                                    LocalPlayer.Character:FindFirstChild("Default"):Activate();
-                                    game:GetService("ReplicatedStorage").b:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                end
-                                debounce = true;
-                                delay(_G.KADelay, function()
+                                delay(getgenv().KADelay, function()
                                     debounce = false;
                                 end)
                             end
@@ -617,7 +612,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
 
     pcall(function()
-        if _G.PickUpGifts then
+        if getgenv().PickUpGifts then
             if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then
                 for _,v in pairs(game:GetService("Workspace"):GetChildren()) do
                     if v.Name == "Gift" and v.Transparency == 0 then
@@ -629,7 +624,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
 
     spawn(function()
-        if _G.GiftsEsp then
+        if getgenv().GiftsEsp then
             if LocalPlayer.Character ~= nil then
                 for _,v in pairs(game:GetService("Workspace"):GetChildren()) do
                     if v.Name == "Gift" and v:FindFirstChildOfClass("BoxHandleAdornment") == nil then
@@ -638,7 +633,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
                         box.Size = v.Size;
                         box.AlwaysOnTop = true;
                         box.Transparency = 0.6;
-                        box.Color3 = _G.GColor;
+                        box.Color3 = getgenv().GColor;
                     end
                 end
             end
@@ -646,7 +641,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
         
     pcall(function()
-        if _G.AdminNotifier then
+        if getgenv().AdminNotifier then
             if game:GetService("Players"):FindFirstChild("PimGameFreak") or game:GetService("Players"):FindFirstChild("buffwagon") or game:GetService("Players"):FindFirstChild("Astronaxtic") or game:GetService("Players"):FindFirstChild("Villadyne") or game:GetService("Players"):FindFirstChild("undeadtaIIie") or game:GetService("Players"):FindFirstChild("L3fr3akyy") or game:GetService("Players"):FindFirstChild("moignon06") or game:GetService("Players"):FindFirstChild("Aleph_Zero1") or game:GetService("Players"):FindFirstChild("Adam_DK") then
                 LocalPlayer:Kick(" \n[dizy's script] \nAdmin joined! Join on other server. ")
             end
@@ -654,11 +649,10 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
 
     spawn(function()
-        if _G.ShowInvisPlrs then
+        if getgenv().ShowInvisPlrs then
             for _,v in pairs(game:GetService("Players"):GetChildren()) do
                 if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health > 0 then
                     if v.Character:FindFirstChild("Torso").Transparency == 1 then
-                        v.Character:FindFirstChild("Head")["Nametag"].Active = true; v.Character:FindFirstChild("Head")["Nametag"].Enabled = true;
                         for _,x in pairs(v.Character:GetChildren()) do
                             if x:IsA("Part") and x.Transparency == 1 and x.Name ~= "HumanoidRootPart" then
                                 x.Transparency = 0.4;
