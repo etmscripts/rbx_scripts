@@ -532,8 +532,8 @@ game:GetService("RunService").Heartbeat:Connect(function()
                                             game:GetService("ReplicatedStorage").ThanosHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
                                         elseif glove.Name == "Stun" then
                                             game:GetService("ReplicatedStorage").HtStun:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
-                                        elseif string.sub(glove.Name, 1, (string.len(glove.Name)-1)) == "ZA HANDO" then
-                                            game:GetService("ReplicatedStorage").zhramt:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "「ZA HANDO」" then
+                                            glove:FindFirstChild("Glove").Size = Vector3.new(50.5, 30.5, 30.7);
                                         elseif glove.Name == "Pusher" then
                                             game:GetService("ReplicatedStorage").PusherHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
                                         elseif glove.Name == "Space" then
