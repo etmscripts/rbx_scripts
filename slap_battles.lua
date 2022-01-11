@@ -196,6 +196,12 @@ tab4:Label("Invisibility (no delay)", {
     BgColor = Color3.fromRGB(40,40,40);
 })
 
+tab4:Label("EMP (no delay)", {
+    TextSize = 18;
+    TextColor = Color3.fromRGB(210,210,210);
+    BgColor = Color3.fromRGB(40,40,40);
+})
+
 tab4:Label("Mail (5 secs delay)", {
     TextSize = 18;
     TextColor = Color3.fromRGB(210,210,210);
