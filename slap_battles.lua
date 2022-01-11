@@ -248,7 +248,7 @@ spawn(function()
     while wait(0.75) do
         pcall(function()
             if getgenv().ReverseGloveGodmode then
-                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character.isInArena ~= nil and LocalPlayer.Character.isInArena.Value == true then
+                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:FindFirstChild("isInArena") ~= nil and LocalPlayer.Character:FindFirstChild("isInArena").Value == true and LocalPlayer.Character:FindFirstChild("Reverse") ~= nil and tostring(LocalPlayer["leaderstats"]["Glove"].Value) == "Reverse" then
                     if LocalPlayer.Character:FindFirstChild("Left Arm"):FindFirstChildOfClass("SelectionBox") == nil or LocalPlayer.Character:FindFirstChild("Right Arm"):FindFirstChildOfClass("SelectionBox") == nil or LocalPlayer.Character:FindFirstChild("Left Leg"):FindFirstChildOfClass("SelectionBox") == nil or LocalPlayer.Character:FindFirstChild("Right Leg"):FindFirstChildOfClass("SelectionBox") == nil then
                         game:GetService("ReplicatedStorage").ReverseAbility:FireServer();
                     elseif LocalPlayer.Character:FindFirstChild("Reversed") ~= nil and LocalPlayer.Character:FindFirstChild("Reversed").Value == true then
@@ -263,8 +263,8 @@ end)
 spawn(function()
     while wait(getgenv().RGBDelay) do
         pcall(function()
-            if getgenv().RainbowCharacter then
-                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:FindFirstChild("isInArena") ~= nil and LocalPlayer.Character:FindFirstChild("isInArena").Value == true then
+            if getgenv().RainbowCharacter and not getgenv().GoldenGodmode then
+                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:FindFirstChild("isInArena") ~= nil and LocalPlayer.Character:FindFirstChild("isInArena").Value == true and LocalPlayer.Character:FindFirstChild("Golden") ~= nil and tostring(LocalPlayer["leaderstats"]["Glove"].Value) == "Golden" then
                     game:GetService("ReplicatedStorage").Goldify:FireServer(false, BrickColor.random());
                 end
             end
@@ -276,7 +276,7 @@ spawn(function()
     while wait(4) do
         pcall(function()
             if getgenv().SpamBricks then
-                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:FindFirstChild("isInArena") ~= nil and LocalPlayer.Character:FindFirstChild("isInArena").Value == true then
+                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:FindFirstChild("isInArena") ~= nil and LocalPlayer.Character:FindFirstChild("isInArena").Value == true and LocalPlayer.Character:FindFirstChild("Brick") ~= nil and tostring(LocalPlayer["leaderstats"]["Glove"].Value) == "Brick" then
                     game:GetService("ReplicatedStorage").lbrick:FireServer()
                 end
             end
@@ -287,7 +287,7 @@ end)
 game:GetService("RunService").Heartbeat:Connect(function()
     spawn(function()
         if getgenv().InfTimestop then
-            if LocalPlayer.Character ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
+            if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:FindFirstChild("God's Hand") ~= nil and tostring(LocalPlayer["leaderstats"]["Glove"].Value) == "God's Hand" then
                 if LocalPlayer.Character.isInArena.Value == true and game:GetService("Workspace"):FindFirstChild("universaltimestop") == nil then
                     game:GetService("ReplicatedStorage").TimestopJump:FireServer();
                     game:GetService("ReplicatedStorage").Timestopchoir:FireServer();
@@ -298,8 +298,8 @@ game:GetService("RunService").Heartbeat:Connect(function()
     end)
 
     spawn(function()
-        if getgenv().GoldenGodmode then
-            if LocalPlayer.Character ~= nil and LocalPlayer.Character:WaitForChild("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:FindFirstChild("isInArena") ~= nil and LocalPlayer.Character:FindFirstChild("isInArena").Value == true then
+        if getgenv().GoldenGodmode and not getgenv().RainbowCharacter then
+            if LocalPlayer.Character ~= nil and LocalPlayer.Character:WaitForChild("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:FindFirstChild("isInArena") ~= nil and LocalPlayer.Character:FindFirstChild("isInArena").Value == true and LocalPlayer.Character:FindFirstChild("Golden") ~= nil and tostring(LocalPlayer["leaderstats"]["Glove"].Value) == "Golden" then
                 for _,v in pairs(LocalPlayer.Character:GetChildren()) do
                     if v:IsA("Part") then
                         if v.Color ~= Color3.fromRGB(255,255,0) then
@@ -313,7 +313,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
 
     spawn(function()
         if getgenv().SpamFarts then
-            if LocalPlayer.Character ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
+            if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") ~= nil and LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 and LocalPlayer.Character:FindFirstChild("Default") ~= nil and tostring(LocalPlayer["leaderstats"]["Glove"].Value) == "Default" then
                 game:GetService("ReplicatedStorage").Fart:FireServer();
             end
         end
