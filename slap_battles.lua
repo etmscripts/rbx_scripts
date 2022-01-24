@@ -16,6 +16,7 @@ local ragdoll_debounce = false;
 local ragdoll_debounce_1 = 0;
 local event_debounce = false;
 local ability_debounce = false;
+local add_kills = 250;
 
 getgenv().InfTimestop = false;
 getgenv().PickUpGifts = false;
@@ -30,6 +31,8 @@ getgenv().SpamRadio = false;
 getgenv().HideVisuals = false;
 getgenv().KillAura = false;
 getgenv().KADelay = 0;
+getgenv().IgnoreFriends = false;
+getgenv().IgnoreReverse = false;
 getgenv().AntiTimestop = false;
 getgenv().AdminNotifier = false;
 getgenv().ShowInvisPlrs = false;
@@ -49,6 +52,16 @@ tab1:Slider("Hit Delay",{
     precise = true;
 },function(value)
     getgenv().KADelay = value;
+end)
+
+tab1:Toggle("Ignore Friends",function(bool)
+    shared.toggle = bool;
+    getgenv().IgnoreFriends = bool;
+end)
+
+tab1:Toggle("Ignore Reverse",function(bool)
+    shared.toggle = bool;
+    getgenv().IgnoreReverse = bool;
 end)
 
 tab1:Toggle("Anti Ragdoll",function(bool)
@@ -214,10 +227,18 @@ tab4:Label("Swap (6 secs delay)", {
     BgColor = Color3.fromRGB(40,40,40);
 })
 
-tab3:Button("Get 250 Kills",function()
-    for i=1,250 do
+tab3:Button("Get Kills [Killstreak]",function()
+    for i=1,add_kills do
         game:GetService("ReplicatedStorage").KillsUpdated:FireServer(i, game:GetService("Workspace")[LocalPlayer.Name].Killstreak);
     end
+end)
+
+tab4:Slider("Amount of kills",{
+    min = 1;
+    max = 250;
+    precise = false;
+},function(value)
+    add_kills = value;
 end)
 
 tab3:Button("Duck Badge",function()
@@ -510,8 +531,10 @@ game:GetService("RunService").Heartbeat:Connect(function()
             for _,v in pairs(game:GetService("Players"):GetChildren()) do
                 if v.Name ~= LocalPlayer.Name then
                     if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChild("Humanoid") ~= nil and LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0 and not debounce then 
-                        if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health > 0 and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v.Character:FindFirstChild("rock") == nil and v.Character:FindFirstChild("isInArena") ~= nil and v.Character:FindFirstChild("isInArena").Value == true then
+                        if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health > 0 and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v.Character:FindFirstChild("rock") == nil and v.Character:FindFirstChild("isInArena") ~= nil and v.Character:FindFirstChild("isInArena").Value == true and v.Character:FindFirstChild("Left Arm").Material ~= Enum.Material.Neon then
                             if v.Character:FindFirstChild("BlockedV") ~= nil then if v.Character:FindFirstChild("BlockedV").Value == game:GetService("Players").LocalPlayer.Name then return; end end
+                            if getgenv().IgnoreFriends then if LocalPlayer:IsFriendsWith(v.userId) then return; end end
+                            if getgenv().IgnoreReverse then if v.Character:FindFirstChild("HumanoidRootPart"):FindFirstChildOfClass("SelectionBox") ~= nil then return; end end
                             if (LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position-v.Character:FindFirstChild("HumanoidRootPart").Position).Magnitude < 30 then
                                 for _,glove in pairs(LocalPlayer.Character:GetChildren()) do
                                     if glove:IsA("Tool") and glove.Name ~= "Radio" and glove.Name ~= "Spectator" then
