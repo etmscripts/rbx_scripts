@@ -626,6 +626,8 @@ game:GetService("RunService").Heartbeat:Connect(function()
                                             game:GetService("ReplicatedStorage").FlexHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
                                         elseif glove.Name == "Mitten" then
                                             game:GetService("ReplicatedStorage").MittenHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Warp" then
+                                            game:GetService("ReplicatedStorage").WarpHt:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
                                         end
                                     end
                                 end
