@@ -233,7 +233,7 @@ tab3:Button("Get Kills [Killstreak]",function()
     end
 end)
 
-tab4:Slider("Amount of kills",{
+tab3:Slider("Amount of kills",{
     min = 1;
     max = 250;
     precise = false;
