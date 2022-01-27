@@ -188,6 +188,13 @@ tab4:Bind("Force Ability",Enum.KeyCode.X,function()
         delay(6, function()
             ability_debounce = false;
         end)
+    elseif tostring(LocalPlayer["leaderstats"]["Glove"].Value) == "Za Hando" and ability_debounce == false then
+        game:GetSevrice("ReplicatedStorage").Erase:FireServer();     
+            
+        ability_debounce = true;
+        delay(5, function()
+            ability_debounce = false;
+        end)
     end
 end)
 
@@ -222,6 +229,12 @@ tab4:Label("Mail (5 secs delay)", {
 })
 
 tab4:Label("Swap (6 secs delay)", {
+    TextSize = 18;
+    TextColor = Color3.fromRGB(210,210,210);
+    BgColor = Color3.fromRGB(40,40,40);
+})
+
+tab4:Label("Pull (5 secs delay)", {
     TextSize = 18;
     TextColor = Color3.fromRGB(210,210,210);
     BgColor = Color3.fromRGB(40,40,40);
