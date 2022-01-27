@@ -570,6 +570,10 @@ game:GetService("RunService").Heartbeat:Connect(function()
                                             game:GetService("ReplicatedStorage").PusherHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
                                         elseif glove.Name == "Space" then
                                             game:GetService("ReplicatedStorage").HtSpace:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Magnet" then
+                                            game:GetService("ReplicatedStorage").MagnetHIT:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Anchor" then
+                                            game:GetService("ReplicatedStorage").hitAnchor:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
                                         elseif glove.Name == "Dream" then
                                             game:GetService("ReplicatedStorage").Dreamhit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
                                         elseif glove.Name == "Mail" then
