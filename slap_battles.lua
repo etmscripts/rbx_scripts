@@ -507,7 +507,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
             end
                
             for _,v in pairs(LocalPlayer.PlayerGui:GetChildren()) do
-                if v.Name == "VineThudImageScreenGUI" or v.Name == "MailPopup" or v.Name == "MittenBlind" then 
+                if v.Name == "VineThudImageScreenGUI" or v.Name == "MailPopup" or v.Name == "MittenBlind" or v.Name == "ProvidenceFlash" then 
                     v:Destroy();
                 end
             end
@@ -534,6 +534,8 @@ game:GetService("RunService").Heartbeat:Connect(function()
             for _,b in pairs(game:GetService("Workspace"):GetChildren()) do
                 if b:IsA("Part") and b:FindFirstChild("SelectionBox") ~= nil and b:FindFirstChild("Sound") ~= nil and b:FindFirstChild("SelectionBox").Color == Color3.fromRGB(84, 255, 255) then
                     b.CanCollide = false;
+                elseif b.Name == "explosionsound" then
+                    b:Destroy();
                 end
             end
         end
