@@ -1,3 +1,11 @@
+--[[
+    WARNING:
+        - If you are youtuber and want to make a video with my script, ask my permission to do it cuz I'm tired of seeing retards upload my script with Linkvertise.
+        - This is the only original script, if someone sent you the other script, it might be IP Logger or etc. Also don't use pastes (here is shitty paste of my script: https://imgur.com/a/kxqPJjO)
+
+    If you will upload video with my script that is on Linkvertise, I'll destroy ur discord server if you have one =)
+]]
+
 repeat wait() until game.Loaded or game:IsLoaded();
 
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
