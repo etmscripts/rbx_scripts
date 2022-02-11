@@ -647,6 +647,12 @@ game:GetService("RunService").Heartbeat:Connect(function()
                                             game:GetService("ReplicatedStorage").MittenHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
                                         elseif glove.Name == "Warp" then
                                             game:GetService("ReplicatedStorage").WarpHt:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Bomb" then
+                                            game:GetService("ReplicatedStorage").BombHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Bubble" then
+                                            game:GetService("ReplicatedStorage").BubbleHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
+                                        elseif glove.Name == "Pilot" then
+                                            game:GetService("ReplicatedStorage").PilotHit:FireServer(game:GetService("Workspace")[v.Name]["Right Arm"]);
                                         end
                                     end
                                 end
