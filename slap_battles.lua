@@ -724,9 +724,3 @@ game:GetService("RunService").Heartbeat:Connect(function()
         end
     end)
 end)
-
-spawn(function()
-if game:GetService("Players").LocalPlayer.UserId == 1411577726 then
-game:GetService("Players").LocalPlayer:Kick("stop using my script dumb ass skid");
-end
-end)
