@@ -5,7 +5,7 @@ local LP = game:GetService("Players").LocalPlayer;
 local tab1 = w:CreateFolder("Farming");
 local tab2 = w:CreateFolder("Buybot");
 
-getgenv().AutoFarm = false;
+getgenv().AutoFarm = true;
 getgenv().LaunchRocket = false;
 getgenv().BuyBackpack = false;
 getgenv().BuyFuelScoop = false;
@@ -186,8 +186,8 @@ pcall(function()
             wait(0.25);
             spawn(function()
                 if getgenv().BuyBackpack then
-                    if LP["leaderstats"]["Cash"].Value > 0 then
-                        if LP["leaderstats"]["Cash"].Value >= 10 and ((LP["leaderstats"]["Cash"].Value-10) / (10*5)) < 5 and LP["Backpacks"]["HasBackpack1"].Value == false then
+                    if LP["leaderstats"]["Cash"].Value > 1,000,000,000 then
+                        if LP["leaderstats"]["Cash"].Value >= 10,000,000,000 and ((LP["leaderstats"]["Cash"].Value-10,000,000,000) / (10*5)) < 5 and LP["Backpacks"]["HasBackpack1"].Value == false then
                             game:GetService("ReplicatedStorage").BuyItem:InvokeServer("Backpack", 1);
                         elseif LP["leaderstats"]["Cash"].Value >= 100 and ((LP["leaderstats"]["Cash"].Value-100) / (100*5)) < 5 and LP["Backpacks"]["HasBackpack2"].Value == false then
                             game:GetService("ReplicatedStorage").BuyItem:InvokeServer("Backpack", 2);
